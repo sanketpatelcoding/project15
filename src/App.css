@@ -5,3 +5,23 @@
 .container{
     overflow:auto;
 }
+.left_view h3{
+    font-size: 23px;
+}
+
+.left_view p{
+    font-weight: 500;
+}
+
+.left_view span{
+    font-weight: 500;
+}
+
+.right_view p{
+    font-weight: 500;
+}
+
+
+.right_view span{
+    font-weight: 500;
+}
