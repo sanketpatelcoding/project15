@@ -12,7 +12,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 const Detail = () => {
   return (
     
-    <div className="container mt-3">
+    <div className="container mt-4">
     <Card sx={{ maxWidth: 600 }}>
     <CardContent>
     <div className="add_btn">
