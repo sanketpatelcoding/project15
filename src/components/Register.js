@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Home from './Home'
+
 
 const Register = () => {
 
@@ -18,13 +18,48 @@ const Register = () => {
     const setdata = (e) => {
         console.log(e.target.value);
         const { name, value } = e.target;
-        setValue((preval) => {
+        setValue((others) => {
             return {
-                ...preval,
+                ...others,
                 [name]: value
             }
         })
     }
+
+    //this will trigger when button clicked.
+ 
+const addInput=async(e)=>{
+e.preventDefault();
+const { name, email, age, work, add, mobile, desc } = setInput;
+
+const res= await fetch("/register",{
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },body:JSON.stringify({
+            name, email, age, work, add, mobile, desc
+          
+        }) 
+})
+
+const data =   res.json();
+console.log(data);
+if(res.status===404 || !data){
+    alert("error")
+    console.log("it is error")
+
+}else{
+    alert("data added succeessfully")
+    console.log("added successfully");
+    
+}
+
+
+}
+
+
+    
+
 
   return (
     <div className='container'>
@@ -60,7 +95,7 @@ const Register = () => {
         <label for="Description" class="form-label">Description</label>
         <textarea name="desc" value={setInput.desc} onChange={setdata}  id="exampleInputEmail1" className="form-control" id="" cols="30" rows="5"></textarea>
     </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" onClick={addInput} class="btn btn-primary">Submit</button>
   </div>
 </form>
     

@@ -1,11 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom'
 
 const Home = () => {
   return (
     <div className="mt-5">
     <div className="container">
         <div className="add_btn mt-2 mb-2">
-           <button className='btn btn-primary' >Add Data+</button>
+        <NavLink to="/register" className="btn btn-primary">Add data</NavLink>
         </div>
 
   
