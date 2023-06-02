@@ -1,12 +1,46 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { NavLink } from 'react-router-dom/cjs/react-router-dom'
 
 const Home = () => {
+
+
+  const [getUserData,setUserData]=useState(
+    []
+  );
+  console.log(getUserData);
+
+const getDatap=async(e)=>{
+
+
+const res= await fetch("/getData",{
+        method:"GET",
+        headers:{
+            "content-type":"application/json"
+        }
+})
+
+const data = await res.json();
+console.log(data);
+if(res.status===404 || !data){
+    
+    console.log("it is error")
+
+}else{
+  setUserData(data)
+  console.log("GET Called");
+    
+}
+
+
+}
+useEffect(()=>{
+  getDatap();
+},[])
   return (
     <div className="mt-5">
     <div className="container">
         <div className="add_btn mt-2 mb-2">
-        <NavLink to="/register" className="btn btn-primary">Add data</NavLink>
+        <NavLink to="/register" className="btn btn-primary">Register UserData</NavLink>
         </div>
 
   
