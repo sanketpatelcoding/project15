@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 
 const Register = () => {
 
+    const history=useHistory();
     const[setInput,setValue]=useState({
         name: "",
         email: "",
@@ -51,7 +53,7 @@ if(res.status===404 || !data){
 }else{
     alert("data added succeessfully")
     console.log("added successfully");
-    
+    history.push('/')
 }
 
 

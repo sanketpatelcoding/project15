@@ -28,6 +28,29 @@ const Home = () => {
     getDatap();
   }, []);
 
+
+  //function to delete the data from the front end 
+  const deleteUser=async (id)=>{
+    const res2 = await fetch(`/deleteUserById/${id}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
+      }
+  });
+
+  const deletedata = await res2.json();
+  console.log(deletedata);
+
+  if (res2.status === 422 || !deletedata) {
+      console.log("error");
+  } else {
+      console.log("user deleted");
+      window.location.reload(false);
+    
+     
+  }
+
+  }
   
   return (
     <div className="mt-5">
@@ -69,7 +92,7 @@ const Home = () => {
                       <NavLink to={`/edit/${element._id}`}><button className="btn btn-primary">
                        <ModeEditIcon fontSize="small"/>
                       </button></NavLink>
-                      <NavLink to=''> <button className="btn btn-danger">
+                      <NavLink to=''> <button  onClick={() => deleteUser(element._id)} className="btn btn-danger">
                         <DeleteOutlineOutlinedIcon fontSize="small"/>
                       </button></NavLink>
                     </td>
