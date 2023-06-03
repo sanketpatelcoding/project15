@@ -9,8 +9,10 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 const Detail = () => {
-  
+  const history=useHistory();
   const [getUserdata, setUserdata] = useState([]);
   console.log(getUserdata);
 
@@ -37,6 +39,33 @@ const Detail = () => {
     }
 }
 
+//
+//delete function
+
+//function to delete the data from the front end 
+const deleteUser=async (id)=>{
+  const res2 = await fetch(`/deleteUserById/${id}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json"
+    }
+});
+
+const deletedata = await res2.json();
+console.log(deletedata);
+
+if (res2.status === 422 || !deletedata) {
+    console.log("error");
+} else {
+    console.log("user deleted");
+ //  window.location.reload(false);
+ history.push('/')
+   
+}
+
+}
+//
+
 useEffect(() => {
   getDatap();
 }, [])
@@ -49,8 +78,8 @@ useEffect(() => {
     <Card sx={{ maxWidth: 600 }}>
     <CardContent>
     <div className="add_btn">
-    <button className="btn btn-primary mx-2"><CreateIcon /></button>
-    <button className="btn btn-danger mx-2"><DeleteForeverIcon /></button>
+    <NavLink to={`/edit/${getUserdata._id}`}><button className="btn btn-primary mx-2"><CreateIcon /></button></NavLink>
+    <button onClick={() => deleteUser(getUserdata._id)} className="btn btn-danger mx-2"><DeleteForeverIcon /></button>
     </div>
     <div className="left_view col-lg-6 col-md-6 col-12">
     <img src='../profile.png' style={{ width: 70 }} alt="imageFace"></img>
