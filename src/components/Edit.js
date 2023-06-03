@@ -1,8 +1,13 @@
-import React,{useState} from 'react';
+import React, {useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom/cjs/react-router-dom';
 
 const Edit = () => {
   
+
+//     const [getUserdata, setUserdata] = useState([]);
+//   console.log(getUserdata);
+
     const[setInput,setValue]=useState({
         name: "",
         email: "",
@@ -25,6 +30,34 @@ const Edit = () => {
         })
     }
 
+    //
+    
+  const { id } = useParams("");
+  console.log(id);
+
+  const getDatap = async () => {
+    const res = await fetch(`/oneUserData/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+        console.log("error in getting id data ");
+
+    } else {
+        setValue(data)
+        console.log("get data");
+    }
+}
+
+useEffect(()=>{getDatap()
+},[])
+    //
   
     return (
         <div className='container'>

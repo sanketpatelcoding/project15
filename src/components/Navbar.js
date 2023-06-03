@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                <NavLink to="/"> Home</NavLink>                  
+                <NavLink className="nav-item" to="/">Home</NavLink>                 
                 </li>
               
             </ul>

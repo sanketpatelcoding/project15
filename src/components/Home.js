@@ -43,10 +43,9 @@ const Home = () => {
               <th scope="col">Name</th>
               <th scope="col">email</th>
               <th scope="col">age</th>
-              <th scope="col">mobile</th>
+              
               <th scope="col">work</th>
-              <th scope="col">address</th>
-              <th scope="col">disc</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -58,10 +57,9 @@ const Home = () => {
                     <td>{element.name}</td>
                     <td>{element.email}</td>
                     <td>{element.age}</td>
-                    <td>{element.mobile}</td>
+                  
                     <td>{element.work}</td>
-                    <td>{element.add}</td>
-                    <td>{element.desc}</td>
+                 
                     <td className="d-flex justify-content-between">
                       <NavLink to={`/viewInfo/${element._id}`}><button className="btn btn-success">
                        <PreviewIcon/>
