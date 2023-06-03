@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { NavLink,useParams } from 'react-router-dom'
+
 
 const Edit = () => {
   
@@ -56,9 +56,39 @@ const Edit = () => {
 }
 
 useEffect(()=>{getDatap()
-},[])
+},[]);
+
+
     //
-  
+    const updateUser = async(e)=>{
+        e.preventDefault();
+
+        const {name,email,work,add,mobile,desc,age} = setInput;
+
+        const res2 = await fetch(`/updateOldUser/${id}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({
+                name,email,work,add,mobile,desc,age
+            })
+        });
+
+        const data2 = await res2.json();
+        console.log(data2);
+
+        if(res2.status === 422 || !data2){
+            alert("fill the data");
+        }else{
+         
+           
+        }
+
+    }
+
+   //
+
     return (
         <div className='container'>
         <NavLink to='/'>Home </NavLink>
@@ -93,7 +123,7 @@ useEffect(()=>{getDatap()
             <label for="Description" class="form-label">Description</label>
             <textarea name="desc" value={setInput.desc} onChange={setdata}  id="exampleInputEmail1" className="form-control" id="" cols="30" rows="5"></textarea>
         </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" onClick={updateUser} class="btn btn-primary">Submit</button>
       </div>
     </form>
         
