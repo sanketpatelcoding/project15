@@ -1,10 +1,11 @@
 import React, {useState, useEffect } from 'react'
 import { NavLink,useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom'
 
 
 const Edit = () => {
   
-
+const history=useHistory();
 //     const [getUserdata, setUserdata] = useState([]);
 //   console.log(getUserdata);
 
@@ -79,10 +80,11 @@ useEffect(()=>{getDatap()
         console.log(data2);
 
         if(res2.status === 422 || !data2){
-            alert("fill the data");
+            alert(" PLeased fill all  the the data");
         }else{
          
-           
+            alert('data added succedd')
+           history.push('/')
         }
 
     }
