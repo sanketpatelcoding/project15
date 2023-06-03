@@ -56,22 +56,22 @@ useEffect(() => {
     <img src='../profile.png' style={{ width: 70 }} alt="imageFace"></img>
     </div>
 
-    <h3 className="mt-3">Name: <span ></span></h3>
+    <h3 className="mt-3">Name: <span >{getUserdata.name}</span></h3>
     <div className="row">
  
     <div className="left_view  col-lg-6 col-md-6 col-12">
-                            <h3 className="mt-3">Age: <span ></span></h3>
-                            <p className="mt-3"><AlternateEmailIcon />Email: <span></span></p>
-                            <p className="mt-3"><BusinessCenterIcon />Occuption: <span></span></p>
+                            <h3 className="mt-3">Age: <span >{getUserdata.age}</span></h3>
+                            <p className="mt-3"><AlternateEmailIcon />Email: <span>{getUserdata.email}</span></p>
+                            <p className="mt-3"><BusinessCenterIcon />Occuption: <span>{getUserdata.work}</span></p>
 
 
                             </div>
                             
                             <div className="right_view  col-lg-6 col-md-6 col-12">
     
-                                <p className="mt-5"><PhoneAndroidIcon />mobile: <span></span></p>
-                                <p className="mt-3"><LocationOnIcon />location: <span></span></p>
-                                <p className="mt-3"><DescriptionIcon/> Description: <span></span></p>
+                                <p className="mt-5"><PhoneAndroidIcon />mobile: <span>{getUserdata.mobile}</span></p>
+                                <p className="mt-3"><LocationOnIcon />address: <span>{getUserdata.add}</span></p>
+                                <p className="mt-3"><DescriptionIcon/> Description: <span>{getUserdata.desc}</span></p>
                             </div>
                             </div>
     </CardContent>
