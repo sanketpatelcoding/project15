@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
@@ -8,9 +8,42 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
-
+import { useParams } from 'react-router-dom/cjs/react-router-dom';
 const Detail = () => {
+  
+  const [getUserdata, setUserdata] = useState([]);
+  console.log(getUserdata);
+
+  const { id } = useParams("");
+  console.log(id);
+
+  const getDatap = async () => {
+    const res = await fetch(`/oneUserData/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+        console.log("error in getting id data ");
+
+    } else {
+        setUserdata(data)
+        console.log("get data");
+    }
+}
+
+useEffect(() => {
+  getDatap();
+}, [])
+
   return (
+
+
     
     <div className="container mt-4">
     <Card sx={{ maxWidth: 600 }}>

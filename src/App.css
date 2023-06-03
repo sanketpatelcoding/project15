@@ -1,7 +1,10 @@
 .add_btn{
     text-align: right;
+    
 }
-
+.btn{
+    margin-right: 10px;
+}
 .container{
     overflow:auto;
 }

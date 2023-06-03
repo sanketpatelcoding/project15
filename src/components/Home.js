@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
-
+import PreviewIcon from '@mui/icons-material/Preview';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 const Home = () => {
   const [getUserData, setUserData] = useState([]);
   console.log(getUserData);
@@ -61,15 +63,15 @@ const Home = () => {
                     <td>{element.add}</td>
                     <td>{element.desc}</td>
                     <td className="d-flex justify-content-between">
-                      <button className="btn btn-success">
-                        <i class="fa-regular fa-eye"></i>{" "}
-                      </button>
-                      <button className="btn btn-primary">
-                        <i class="fa-sharp fa-regular fa-pen-to-square"></i>
-                      </button>
-                      <button className="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i>
-                      </button>
+                      <NavLink to={`/viewInfo/${element._id}`}><button className="btn btn-success">
+                       <PreviewIcon/>
+                      </button></NavLink>
+                      <NavLink to={`/edit/${element._id}`}><button className="btn btn-primary">
+                       <ModeEditIcon fontSize="small"/>
+                      </button></NavLink>
+                      <NavLink to=''> <button className="btn btn-danger">
+                        <DeleteOutlineOutlinedIcon fontSize="small"/>
+                      </button></NavLink>
                     </td>
                   </tr>
                 </>
